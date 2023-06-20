@@ -7,6 +7,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.util.io.FileUtil;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -35,7 +36,7 @@ public class RunScannerAction extends AnAction {
 
         File resultFile;
         try {
-            resultFile = File.createTempFile("Trivy", ".json");
+            resultFile = FileUtil.createTempFile("Trivy", ".json");
         } catch (IOException ex) {
             TrivyNotificationGroup.notifyError(project, ex.getLocalizedMessage());
             return;
